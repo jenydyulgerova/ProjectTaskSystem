@@ -8,6 +8,7 @@ use App\Repository\TaskRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 
 #[ORM\Entity(repositoryClass: TaskRepository::class)]
@@ -27,6 +28,7 @@ class Task
     private ?Project $project = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotNull]
     private ?string $title = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
